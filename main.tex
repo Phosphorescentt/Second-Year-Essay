@@ -7,12 +7,15 @@
 % \usepackage{graphicx}
 % \usepackage{framed}
 % \usepackage{amsmath}
-% \usepackage{amssymb}
+\usepackage{amssymb}
 % \usepackage{amsfonts}
 % \usepackage{cite}
 % \usepackage{mathrsfs}
 % \usepackage{array}
 \usepackage{amsthm} %  package used to make the theorem environments work.
+
+\usepackage{subfiles}
+\usepackage{xcolor}
 
 % code below sets up new theorem environments
 \theoremstyle{plain} % this sets the style for all new environments created using \newtheorem to have the "theorem" style, which as a bold title, italic text and vertical space above and below it. 
@@ -21,7 +24,6 @@
 \newtheorem{prop}[thm]{Proposition} 
 \newtheorem*{cor}{Corollary} 
 \newtheorem*{claim}{Claim} 
-\newtheorem*{lagrange}{Lagrange's Theorem} % the star makes an unnumbered theorem
 
 \theoremstyle{definition} % this sets the style for all new environments created using \newtheorem to have the "definition" style, which as a bold title, upright text and vertical space above and below it.
 \newtheorem{defn}{Definition}[section]
@@ -35,13 +37,17 @@
 \begin{document}  
 \maketitle
 
-\newpage
+% \newpage
 
 \begin{abstract}
-  Consider a one metre by one metre cube of water-permeable material. What is the probability that that if water is poured on top of the cube it may percolate all the way through
-  the cube and out the opposite face? Initially developed by Paul Flory and Walter Stockmayer in 1944 whilst studying the gelation of polymers, Percolation theory attempts to answer such questions through a statistical analysis of graph configurations in both directed and undirected
-  fashions. This essay will introduce the basics of percolation theory, first in one dimension and then working upwards to two dimensions before moving off to talk about some of
-  its applications.
+  Consider a cube of water-permeable material. What is the probability that that if water is poured on top of the cube it may drain all the way through
+  the cube and out the opposite face? 
+  Initially developed by Paul Flory and Walter Stockmayer in 1944, percolation theory attempts to answer such questions by rephrasing them
+  in terms of vertices (sites) and edges (bonds) of graphs and examining the connectedness of such graphs. The connectedness of these graphs---in the infinite case---is
+  determined by a threshold probability, $p_c$, describing whether the water may pass through each site or bond.
+  This essay will introduce the ideas of site and bond percolation as well as the notion of clusters and critical (threshold) probabilities.
+  We will also analyse the one dimensional case to garner a basic understanding before exploring higher dimensional cases. After discussing percolation in the abstract, we will move on and look at the many applications of the
+  theory discussed in the earlier parts of the essay. 
 \end{abstract}
 
 \newpage
@@ -50,6 +56,12 @@
 
 \newpage
 
-\section{Introduction}
+\subfile{1/main}
+
+\section{The one dimensional case}
+
+\section{Higher dimensional cases}
+
+\section{Applications}
 
 \end{document}
