@@ -17,17 +17,20 @@
 \usepackage{subfiles}
 \usepackage{xcolor}
 
+\usepackage{graphicx}
+\graphicspath{ {/mnt/z/Documents/Second-Year-Essay/images/} }
+
 % code below sets up new theorem environments
 \theoremstyle{plain} % this sets the style for all new environments created using \newtheorem to have the "theorem" style, which as a bold title, italic text and vertical space above and below it. 
-\newtheorem{thm}{Theorem}[section] 
-\newtheorem{lem}[thm]{Lemma} 
-\newtheorem{prop}[thm]{Proposition} 
-\newtheorem*{cor}{Corollary} 
+\newtheorem{theorem}{Theorem}[section] 
+\newtheorem{lemma}[theorem]{Lemma} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem*{corollary}{Corollary} 
 \newtheorem*{claim}{Claim} 
 
 \theoremstyle{definition} % this sets the style for all new environments created using \newtheorem to have the "definition" style, which as a bold title, upright text and vertical space above and below it.
-\newtheorem{defn}{Definition}[section]
-\newtheorem{eg}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 
 
 \theoremstyle{remark} % this sets the style for all new environments created using \newtheorem to have the "remark" style, which as an italic non-bold title, upright text and no extra vertical space above and below it.
@@ -46,7 +49,7 @@
   in terms of vertices (sites) and edges (bonds) of graphs and examining the connectedness of such graphs. The connectedness of these graphs---in the infinite case---is
   determined by a threshold probability, $p_c$, describing whether the water may pass through each site or bond.
   This essay will introduce the ideas of site and bond percolation as well as the notion of clusters and critical (threshold) probabilities.
-  We will also analyse the one dimensional case to garner a basic understanding before exploring higher dimensional cases. After discussing percolation in the abstract, we will move on and look at the many applications of the
+  We will also analyse the one dimensional case to garner a basic understanding before exploring higher dimensional cases. After discussing the concepts of percolation theory, we will move on and look at the many applications of the
   theory discussed in the earlier parts of the essay. 
 \end{abstract}
 
@@ -56,6 +59,7 @@
 
 \newpage
 
+% Introduction
 \subfile{1/main}
 
 \section{The one dimensional case}

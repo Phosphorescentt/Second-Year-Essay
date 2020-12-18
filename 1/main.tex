@@ -1,2 +1,27 @@
 \section{Introduction}
-When introducing the idea of percolation, the most reasonable place to start is by considering the lattice on $\mathbb{Z}^2$.
+\subsection{The canonical example}
+Let us consider the example from the abstract of water filtering through a porus medium, but this time in two dimensions. How do we model this? One might imagine that the medium consists of
+many particles arranged (for simplicity) in a $n \times n$ square lattice and linked to each of their nearest neighbours. Clearly, this is the lattice on $\mathbb{Z}^2$. To setup the problem,
+each of the particles will be expressed as a vertex in a graph and each of the links will be an edge. In the context of percolation, a vertex is called a site and an edge is
+called a bond; these edges and bonds form a network. (We're sure the reader can visualise $\mathbb{Z}^2$, but just in case they can't, they may refer to Figure
+\ref{fig:squarelattice} beneath) \\
+
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{placeholder}
+  \caption{The lattice on $\mathbb{Z}^2$}
+  \label{fig:squarelattice}
+\end{figure}
+
+So what does percolation actually mean? We shall consider two different types of percolation: bond and site percolation.
+
+\begin{definition}
+  We say that we are considering \textbf{site percolation} if we let all of the sites in the network be open with probability $p \in [0, 1]$ (meaning that they allow the liquid
+  through) and closed with probability $1-p \in [0, 1]$ (meaning that they don't allow liquid through).
+\end{definition}
+\begin{definition}
+  We say that we are considering \textbf{bond percolation} if we let all of the bonds in the network be open with probability $p \in [0, 1]$ (meaning that they allow the liquid
+  through) and closed with probability $1-p \in [0, 1]$ (meaning that they don't allow liquid through).
+\end{definition}
+
+Now that we've defined site and bond percolation, what's the problem that we're trying to solve? In the case of water being poured on a porus medium, we would like to know
+whether there is a path from the one side of the network to the other. 
