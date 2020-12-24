@@ -1,17 +1,22 @@
 \section{Introduction}
 \subsection{The canonical example}
 Let us consider the example from the abstract of water filtering through a porus medium, but this time in two dimensions. How do we model this? One might imagine that the medium consists of
-many particles arranged (for simplicity) in an $n \times n$ square lattice and linked to each of their nearest neighbours. Clearly, this is the lattice on $\mathbb{Z}^2$. To setup the problem,
-each of the particles will be expressed as a vertex in a graph and each of the links will be an edge. In the context of percolation, a vertex is called a site and an edge is
-called a bond; these sites and bonds form a network. (We're sure the reader can visualise $\mathbb{Z}^2$, but just in case they can't, they may refer to figure
-\ref{fig:square lattice} beneath) \\
+many particles arranged (for simplicity) in an $n \times n$ square lattice and linked to each of their nearest neighbours. Clearly, this is the lattice on $\mathbb{Z}^2$.
+To set up the problem, each of the particles will be expressed as a vertex in a graph and each of the links will be an edge. In the context of percolation, a vertex is called a site and an edge is
+called a bond; these sites and bonds form a network.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{placeholder}
-  \caption{The lattice on $\mathbb{Z}^2$}
-  \label{fig:square lattice}
-\end{figure}
+\begin{definition}\label{def:bond}
+  A vertex in a graph is referred to as a \textbf{bond}.
+\end{definition}
+
+\begin{definition}\label{def:site}
+  A edge in a graph is referred to as a \textbf{site}.
+\end{definition}
+
+\begin{definition}\label{def:network}
+  A graph is referred to as a \textbf{network}.
+\end{definition}
+
 
 So what does percolation actually mean? First we shall introduce the notion of open and closed sites and bonds and then we can discuss percolation.
 
@@ -53,49 +58,39 @@ whether there is an open path from the top of the network to the bottom.
 
 The probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$. As a result of our context, our value for $n$ should be
 large---this is the case with most percolation models---but we shall use small $n$ for the sake of example and simplicity. Let us now fix $n$ and see what happens as we vary $p$. Obviously we have two trivial cases, $p=0$ and $p=1$,
-where the network is completely openly disconnected and completely openly connected respectively (see
-figures \ref{fig:p=0} and \ref{fig:p=1} below).
-
-\begin{figure}[h!]
-  \centering
-  \begin{subfigure}[b]{0.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{placeholder}
-    \caption{$p=0$}
-    \label{fig:p=0}
-  \end{subfigure}
-  \hfill
-  \begin{subfigure}[b]{0.4\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{placeholder}
-    \caption{$p=1$}
-    \label{fig:p=1}
-  \end{subfigure}
-  \caption{Examples of percolation for $p\in\{0, 1\}$.}
-  \label{fig:probability extrema}
-\end{figure}
-
+where the network is completely openly disconnected and completely openly connected respectively.
 What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
-\ref{fig:p=0.75} below.
+\ref{fig:p=0.75} on page \pageref{fig:probabilities}.
+As one might expect, as $p$ increases, so does the "connectedness" of the network; i.e. the probability of having an open path from the top of the network to the bottom increases
+with $p$. Also, observe that as $p$ increases we also get larger "clusters" of open connected sites or bonds.
 
-\begin{figure}[h!]
-  \begin{subfigure}[b]{0.3\textwidth}
+\begin{definition}\label{def:cluster}
+  Let $N=(V, E)$ be a network. A \textbf{cluster} is a set of vertices, $C \subset V$, such that if $v_1, v_2 \in C$ then $v_1$ and $v_2$ are openly connected.
+\end{definition}
+
+\begin{definition}\label{def:cluster size}
+  Let $N=(V, E)$ be a network and let $C \subset V$ be a cluster. The \textbf{size} of $C$, denoted by $|C|$, is the number of sites in the cluster.
+\end{definition}
+
+\begin{figure}[p]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{placeholder}
+    \includegraphics[width=\textwidth]{1/percolation1}
     \caption{$p=0.25$}
     \label{fig:p=0.25}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{placeholder}
+    \includegraphics[width=\textwidth]{1/percolation2}
     \caption{$p=0.5$}
     \label{fig:p=0.5}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[b]{0.3\textwidth}
+  \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{placeholder}
+    \includegraphics[width=\textwidth]{1/percolation3}
     \caption{$p=0.75$}
     \label{fig:p=0.75}
   \end{subfigure}
@@ -103,5 +98,10 @@ What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our 
   \label{fig:probabilities}
 \end{figure}
 
-As one might expect, as $p$ increases, so does the "connectedness" of the network; i.e. the probability of having an open path from the top of the network to the bottom increases
-with $p$. Also observe that, as $p$ increases we also get larger "clusters" of open connected sites or bonds.
+We will explore clusters in more detail in the next section, but for now let us introduce the idea of a critical probability. Although they don't exist in the finite cases, they do
+exist in the infinite cases.
+
+\begin{definition}\label{def:critical probability}
+  Consider an infinite network, N. The critical probability, denoted $p_c$, is the probability such that an infinite cluster exists. The value of $p_c$ may not  be equal for site
+  and bond percolation.
+\end{definition}
