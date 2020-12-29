@@ -5,12 +5,12 @@ many particles arranged (for simplicity) in an $n \times n$ square lattice and l
 To set up the problem, each of the particles will be expressed as a vertex in a graph and each of the links will be an edge. In the context of percolation, a vertex is called a site and an edge is
 called a bond; these sites and bonds form a network.
 
-\begin{definition}\label{def:bond}
-  A vertex in a graph is referred to as a \textbf{bond}.
+\begin{definition}\label{def:site}
+  A vertex in a graph is referred to as a \textbf{site}.
 \end{definition}
 
-\begin{definition}\label{def:site}
-  A edge in a graph is referred to as a \textbf{site}.
+\begin{definition}\label{def:bond}
+  A edge in a graph is referred to as a \textbf{bond}.
 \end{definition}
 
 \begin{definition}\label{def:network}
@@ -38,9 +38,9 @@ And now for the percolation definitions.
 \end{definition}
 
 Now that we've defined site and bond percolation, what's the problem that we're trying to solve? In the case of water being poured on a porus medium, we would like to know
-whether there is an open path from the top of the network to the bottom.
+whether there is an open path from the top of the network to the bottom. We shall model this using bond percolation.
 
-\begin{definition}\label{def:open}
+\begin{definition}\label{def:open path}
   We say that a path in a network is \textbf{open} if:
   \begin{itemize}
     \item when considering site perolation, every site in the path is open.
@@ -49,14 +49,15 @@ whether there is an open path from the top of the network to the bottom.
 \end{definition}
 
 \begin{definition}\label{def:openly connected}
-  Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly connected} if $\exists$ an open path connecting $A$ and $B$.
+  Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly connected} if there exists an open path connecting $A$ and $B$.
 \end{definition}
 
 \begin{definition}\label{def:openly disconnected}
-  Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly disconnected} if $\nexists$ an open path connecting $A$ and $B$.
+  Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly disconnected} if there does not exist an open path connecting $A$ and
+  $B$.\footnote{Definitions \ref{def:open path}, \ref{def:openly connected} and \ref{def:openly disconnected} are equivalent for both site and bond percolation.}
 \end{definition}
 
-The probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$. As a result of our context, our value for $n$ should be
+The probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$ from before. As a result of our context, our value for $n$ should be
 large---this is the case with most percolation models---but we shall use small $n$ for the sake of example and simplicity. Let us now fix $n$ and see what happens as we vary $p$. Obviously we have two trivial cases, $p=0$ and $p=1$,
 where the network is completely openly disconnected and completely openly connected respectively.
 What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
@@ -94,14 +95,78 @@ with $p$. Also, observe that as $p$ increases we also get larger "clusters" of o
     \caption{$p=0.75$}
     \label{fig:p=0.75}
   \end{subfigure}
-  \caption{Examples of percolation for $p\in(0,1)$.}
+  \caption{Examples of \textit{bond} percolation for $p\in(0,1)$ on a $40 \times 40$ network.}
   \label{fig:probabilities}
 \end{figure}
 
 We will explore clusters in more detail in the next section, but for now let us introduce the idea of a critical probability. Although they don't exist in the finite cases, they do
 exist in the infinite cases.
 
+\begin{definition}\label{def:infinite cluster}
+  Consider a network, $N = (V, E)$. A cluster, $C \subseteq V$, is considered \textbf{infinite} iff $|C| = \infty$.
+\end{definition}
+
 \begin{definition}\label{def:critical probability}
   Consider an infinite network, N. The critical probability, denoted $p_c$, is the probability such that an infinite cluster exists. The value of $p_c$ may not  be equal for site
   and bond percolation.
 \end{definition}
+
+\newpage
+
+\subsection{Other network configurations}
+We have already seen the lattice on $\mathbb{Z}^2$ as an example, but there are many more. To remain within the scope of this essay, we shall only breifly mention some two and
+three dimensional examples and print their site and bond critical probabilities and a diagram.
+
+\cite[p. 11]{Sahimi}
+\subsection*{Two dimensional network configurations}
+Clearly, one two dimensional network configuration is the lattice on $\mathbb{Z}^2$. Other regular two dimensional network configurations include, but are not limited to, the Bethe Lattice (Figure \ref{fig:bethe lattice}), Honeycomb
+Lattice (Figure \ref{fig:honeycomb lattice}), Kagome Lattice (Figure \ref{fig:kagome lattice}) and the Triangular Lattice (Figure \ref{fig:triangular lattice}). As one might
+imagine, each of these configurations has a different (but not necessarily distinct) critical probability. Below is a table showing the critical probabilities for each of the
+aforementioned network configurations. It should be noted that probabilities marked with a * (star) are exact results. \cite[p. 11]{Sahimi}
+
+\begin{center}
+\begin{tabular}{| c | c | c |}
+    \hline
+    Configuration & $p_c$ for site percolation & $p_c$ for bond percolation \\
+    \hline
+    $\mathbb{Z}^2$ & $1/2$ * & $0.5927$ \\
+    Honeycomb & $1 - 2sin(\pi/18)$* & $0.6962$ \\
+    Bethe with $z=3$ & $1/2$?* & $1/2$?* \\
+    Kagome & $0.522$ & $0.652$ \\
+    Triangular & $2sin(\pi/18)$* & $1/2$* \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{figure}[p]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Bethe Lattice}
+    \label{fig:bethe lattice}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Honeycomb Lattice}
+    \label{fig:honeycomb lattice}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Kagome Lattice}
+    \label{fig:kagome lattice}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Triangular Lattice}
+    \label{fig:triangular lattice}
+  \end{subfigure}
+  \caption{Two dimensional network configurations}
+  \label{fig:two dimensional networks}
+\end{figure}
