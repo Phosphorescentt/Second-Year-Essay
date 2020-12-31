@@ -30,11 +30,13 @@ So what does percolation actually mean? First we shall introduce the notion of o
 
 And now for the percolation definitions.
 
-\begin{definition}\label{def:sitepercolation}
-  We say that we are considering \textbf{site percolation} if we let all of the sites in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in [0, 1]$.
+\begin{definition}\label{def:site percolation}
+  We say that we are considering \textbf{site percolation} if we let all of the sites in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in
+  [0, 1]$. We refer to $p$ here as the percolation probability.
 \end{definition}
-\begin{definition}\label{def:bondpercolation}
-  We say that we are considering \textbf{bond percolation} if we let all of the bonds in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in [0, 1]$.
+\begin{definition}\label{def:bond percolation}
+  We say that we are considering \textbf{bond percolation} if we let all of the bonds in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in
+  [0, 1]$. We refer to $p$ here as the percolation probability.
 \end{definition}
 
 Now that we've defined site and bond percolation, what's the problem that we're trying to solve? In the case of water being poured on a porus medium, we would like to know
@@ -70,7 +72,8 @@ with $p$. Also, observe that as $p$ increases we also get larger "clusters" of o
 \end{definition}
 
 \begin{definition}\label{def:cluster size}
-  Let $N=(V, E)$ be a network and let $C \subset V$ be a cluster. The \textbf{size} of $C$, denoted by $|C|$, is the number of sites in the cluster.
+  Let $N=(V, E)$ be a network and let $C \subset V$ be a cluster. The \textbf{size} of $C$, denoted by $|C|$, is the number of sites in the cluster. A cluster of size $s$ may be
+  referred to as an $s$-cluster.
 \end{definition}
 
 \begin{figure}[p]
@@ -100,40 +103,47 @@ with $p$. Also, observe that as $p$ increases we also get larger "clusters" of o
 \end{figure}
 
 We will explore clusters in more detail in the next section, but for now let us introduce the idea of a critical probability. Although they don't exist in the finite cases, they do
-exist in the infinite cases.
+exist in the infinite cases. \todo{Add computational examples of the connectedness as p changes}
 
 \begin{definition}\label{def:infinite cluster}
-  Consider a network, $N = (V, E)$. A cluster, $C \subseteq V$, is considered \textbf{infinite} iff $|C| = \infty$.
+  Consider a network, $N = (V, E)$. A cluster, $C \subseteq V$, is considered \textbf{infinite} if and only if $|C| = \infty$.
 \end{definition}
 
 \begin{definition}\label{def:critical probability}
-  Consider an infinite network, N. The critical probability, denoted $p_c$, is the probability such that an infinite cluster exists. The value of $p_c$ may not  be equal for site
-  and bond percolation.
+  Consider an infinite network $N = (V, E)$. The \textbf{critical probability}, denoted $p_c$, is the percolation probabililty such that there exists a $C \subseteq V$ with $|C| = \infty$.
 \end{definition}
 
-\newpage
+% \newpage
 
 \subsection{Other network configurations}
 We have already seen the lattice on $\mathbb{Z}^2$ as an example, but there are many more. To remain within the scope of this essay, we shall only breifly mention some two and
 three dimensional examples and print their site and bond critical probabilities and a diagram.
 
-\cite[p. 11]{Sahimi}
+\begin{definition}
+  A network is considered \textbf{regular} if every site in that network has the same number of bonds attached to it.
+\end{definition}
+
+\begin{definition}
+  The \textbf{coordination number} of a regular network is the number of bonds attached at every site. This quantity is denoted using the letter $Z$. I.e. the lattice on
+  $\mathbb{Z}^2$ has a coordination number $Z = 4$. 
+\end{definition}
+
 \subsection*{Two dimensional network configurations}
-Clearly, one two dimensional network configuration is the lattice on $\mathbb{Z}^2$. Other regular two dimensional network configurations include, but are not limited to, the Bethe Lattice (Figure \ref{fig:bethe lattice}), Honeycomb
+Clearly, one two dimensional network configuration is the lattice on $\mathbb{Z}^2$. In context this is referred to as the square lattice. Other regular two dimensional network configurations include, but are not limited to, the Bethe Lattice (Figure \ref{fig:bethe lattice}), Honeycomb
 Lattice (Figure \ref{fig:honeycomb lattice}), Kagome Lattice (Figure \ref{fig:kagome lattice}) and the Triangular Lattice (Figure \ref{fig:triangular lattice}). As one might
 imagine, each of these configurations has a different (but not necessarily distinct) critical probability. Below is a table showing the critical probabilities for each of the
 aforementioned network configurations. It should be noted that probabilities marked with a * (star) are exact results. \cite[p. 11]{Sahimi}
 
 \begin{center}
-\begin{tabular}{| c | c | c |}
+\begin{tabular}{| c | c | c | c |}
     \hline
-    Configuration & $p_c$ for site percolation & $p_c$ for bond percolation \\
+    Configuration & Z & $p_c$ for bond percolation & $p_c$ for site percolation \\
     \hline
-    $\mathbb{Z}^2$ & $1/2$ * & $0.5927$ \\
-    Honeycomb & $1 - 2sin(\pi/18)$* & $0.6962$ \\
-    Bethe with $z=3$ & $1/2$?* & $1/2$?* \\
-    Kagome & $0.522$ & $0.652$ \\
-    Triangular & $2sin(\pi/18)$* & $1/2$* \\
+    Bethe & $3$ & TO FIND & TO FIND \\
+    Honeycomb & $3$ & $1 - 2\sin(\pi/18)$* & $0.6962$ \\
+    $\mathbb{Z}^2$ (Square) & $4$ & $1/2$* & $0.5927$ \\
+    Kagome & $4$ & $0.522$ & $0.652$ \\
+    Triangular & $6$ & $2\sin(\pi/18)$* & $1/2$* \\
     \hline
   \end{tabular}
 \end{center}
@@ -167,6 +177,59 @@ aforementioned network configurations. It should be noted that probabilities mar
     \caption{Triangular Lattice}
     \label{fig:triangular lattice}
   \end{subfigure}
-  \caption{Two dimensional network configurations}
+  \caption{Two dimensional regular network configurations}
   \label{fig:two dimensional networks}
+\end{figure}
+
+\subsection*{Three dimensional network configurations}
+It shouldn't be hard to guess that the lattice on $\mathbb{Z}^3$ is a potential configuration for three dimensional networks. We call this configuration the Simple Cubic Lattice (Figure
+\ref{fig:simple cubic lattice}). Similarly to
+the two dimensional case, there many other regular three dimensional network configurations. These include, but again are not limited to, the Diamond Lattice (Figure
+\ref{fig:diamond lattice}), the Body Centered Cubic (BCC) Lattice (Figure \ref{fig:body centered cubic lattice}) and the Face Centered Cubic (FCC) Lattice (Figure \ref{fig:face
+centered cubic lattice}). Notice how none of these results are precise. This is a testament to how hard this problem is.
+
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    Configuration & Z & $p_c$ for site percolation & $p_c$ for bond percolation \\
+    \hline
+    Diamond & $4$ & $0.3886$ & $0.4299$ \\
+    Simple Cubic & $6$ & $0.2488$ & $0.3116$ \\
+    BCC & $8$ & $0.1795$ & $0.2464$ \\
+    FCC & $12$ & $0.198$ & $0.119$ \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{figure}[p]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Diamond Lattice}
+    \label{fig:diamond lattice}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Simple Cubic Lattice}
+    \label{fig:simple cubic lattice}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Body Centered Cubic Lattice}
+    \label{fig:body centered cubic lattice}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{placeholder}
+    \caption{Face Centered Cubic Lattice}
+    \label{fig:face centered cubic lattice}
+  \end{subfigure}
+  \caption{Three dimensional regular network configurations}
+  \label{fig:three dimensional networks}
 \end{figure}

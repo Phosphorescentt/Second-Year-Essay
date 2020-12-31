@@ -1,0 +1,15 @@
+\section{The one dimensional case}
+To develop an understanding of how to analyse these networks, we shall consider the one dimensional case where our network is the lattice on $\mathbb{Z}$. We shall use the same
+idea of percolation probability from definitions \ref{def:site percolation} and \ref{def:bond percolation}.
+
+\begin{theorem}\label{thm:critical probability z1 site percolation}
+  The critical probability, $p_c$, for the lattice on $\mathbb{Z}^2$ when considering site percolation is $p_c = 1$.
+\end{theorem}
+
+If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$. But we're mathematicians, intuition simply won't do. In order
+to prove this theorem, we shall introduce some more machinery.
+
+\begin{definition}\label{def:s-clusters per site}
+  We define the \textbf{number of $s$-clusters per site} by the following quantity:
+  $$n_s = p^s(1-p)^2$$
+\end{definition}
