@@ -1,15 +1,58 @@
 \section{The one dimensional case}
-To develop an understanding of how to analyse these networks, we shall consider the one dimensional case where our network is the lattice on $\mathbb{Z}$. We shall use the same
+To develop an understanding of how to analyse these networks, we shall consider the one dimensional case where our network is the lattice on $\mathbb{Z}$, or a "chain". We shall use the same
 idea of percolation probability from definitions \ref{def:site percolation} and \ref{def:bond percolation}.
 
 \begin{theorem}\label{thm:critical probability z1 site percolation}
   The critical probability, $p_c$, for the lattice on $\mathbb{Z}^2$ when considering site percolation is $p_c = 1$.
 \end{theorem}
 
-If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$. But we're mathematicians, intuition simply won't do. In order
-to prove this theorem, we shall introduce some more machinery.
+If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$. In order to prove this theorem, we shall introduce some more
+machinery. This machinery isn't necessary for the proof, but it helps with understanding and will allow us to analyse more interesting cases later on.
 
 \begin{definition}\label{def:s-clusters per site}
-  We define the \textbf{number of $s$-clusters per site} by the following quantity:
+  If the percolation probability on the chain is $p$, we define the \textbf{number of $\mathbf{s}$-clusters per site} by the following quantity:
   $$n_s = p^s(1-p)^2$$
 \end{definition}
+
+This quantity represents the probability that any given site in the network is the left end of an $s$-cluster. So, if our network is of length $L >> s$, then we will have
+$Ln_s=Lp^s(1-p)^2$ clusters of size $s$ on average. This quantity also allows us to explore the probability that any given site is part of an $s$-cluster. Such a probability is
+given by the quantity $n_ss$.
+
+The idea of percolation is to understand whether a path exists from one side of the network to the other, so we have to use a slightly different definition for the one dimensional
+case. This new definition fixes an issue that I'll address after the proof.
+
+\begin{definition}\label{def:critical probability special case}
+  Consider the lattice on $\mathbb{Z}$ of the form $N = (V, E)$. The critical probability, denoted $p_c$, is the percolation probability such that the probability that there
+  \textbf{uniquely} exists a cluster, $C
+  \subseteq V$, with $|C| = \infty$ is $1$.
+\end{definition}
+
+\begin{proof}{(Theorem \ref{thm:critical probability z1 site percolation})}
+  We shall prove by contradiction. Let us assume that $p_c \in [0, 1)$ and is fixed. This implies that a chain of length $L$ will have, on average, $L(1-p)$ closed sites. As $L
+  \rightarrow \infty$, $L(1-p) \rightarrow \infty$ showing us that there is at least one closed site in the chain and that means there is no continuous row of occupied
+  sites. Thus $p_c=1$ in order to have only one infinite cluster.
+\end{proof}
+
+So why doesn't this proof work if we hadn't made that ammendment to the definition. Notice that $\mathbb{Z}$ is a countably infinite set and all of the $L(1-p)$ closed sites form a
+subset of $\mathbb{Z}$. This means that the set of all closed sites is also countably infinite. This situation may be rephrased in a way such that we must partition a countably infinite set into
+countably infinite subsets. \todo{prove this?}
+
+The above results allow us to get some more interesting information about the behaviour of our system. For example, we can deduce the following:
+\begin{corollary}
+  When considering the lattice on $\mathbb{Z}$ with percolation probability $p \in [0, 1)$, the following equality holds:
+  $$\sum_sn_ss = p$$
+\end{corollary}
+This result comes from the fact that every open site must belong to a cluster of some size $s$. So summing $n_ss$ over all $s$ must give us $p$. This equality may also be derived
+using the definition of $n_s$ and the formula for a geometric series.
+
+\begin{proof}
+  \begin{align*}
+    \sum_sn_ss &= \sum_sp^s(1-p)^2s \\
+    &= (1-p)^2\sum_sp\frac{d(p^s)}{dp} \\
+    &= (1-p)^2p\frac{d(\sum_sp^s)}{dp} \\
+    &= (1-p)^2p\frac{d(p/(1-p))}{dp} \\
+    &= p
+  \end{align*}
+\end{proof}
+
+It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$.

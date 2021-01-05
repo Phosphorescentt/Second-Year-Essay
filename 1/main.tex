@@ -103,16 +103,17 @@ with $p$. Also, observe that as $p$ increases we also get larger "clusters" of o
 \end{figure}
 
 We will explore clusters in more detail in the next section, but for now let us introduce the idea of a critical probability. Although they don't exist in the finite cases, they do
-exist in the infinite cases. \todo{Add computational examples of the connectedness as p changes}
+exist in the infinite cases. 
 
 \begin{definition}\label{def:infinite cluster}
   Consider a network, $N = (V, E)$. A cluster, $C \subseteq V$, is considered \textbf{infinite} if and only if $|C| = \infty$.
 \end{definition}
 
 \begin{definition}\label{def:critical probability}
-  Consider an infinite network $N = (V, E)$. The \textbf{critical probability}, denoted $p_c$, is the percolation probabililty such that there exists a $C \subseteq V$ with $|C| = \infty$.
+  Consider an infinite network $N = (V, E)$. The \textbf{critical probability}, denoted $p_c$, is the percolation probabililty such that the probability that there exists a
+  cluster, $C \subseteq V$ with $|C| = \infty$ is $1$.
+  \todo{Add computational examples of the connectedness as p changes}
 \end{definition}
-
 % \newpage
 
 \subsection{Other network configurations}
@@ -134,6 +135,7 @@ Lattice (Figure \ref{fig:honeycomb lattice}), Kagome Lattice (Figure \ref{fig:ka
 imagine, each of these configurations has a different (but not necessarily distinct) critical probability. Below is a table showing the critical probabilities for each of the
 aforementioned network configurations. It should be noted that probabilities marked with a * (star) are exact results. \cite[p. 11]{Sahimi}
 
+\begin{figure}[h!]
 \begin{center}
 \begin{tabular}{| c | c | c | c |}
     \hline
@@ -147,6 +149,28 @@ aforementioned network configurations. It should be noted that probabilities mar
     \hline
   \end{tabular}
 \end{center}
+\centering
+\caption{Critical probabilities for various configurations of two dimensional networks}
+\label{fig:critical probabilities in two dimensions}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    Configuration & Z & $p_c$ for site percolation & $p_c$ for bond percolation \\
+    \hline
+    Diamond & $4$ & $0.3886$ & $0.4299$ \\
+    Simple Cubic & $6$ & $0.2488$ & $0.3116$ \\
+    BCC & $8$ & $0.1795$ & $0.2464$ \\
+    FCC & $12$ & $0.198$ & $0.119$ \\
+    \hline
+  \end{tabular}
+\end{center}
+\centering
+\caption{Critical probabilities for various configurations of three dimensional networks}
+\label{fig:critical probabilities in three dimensions}
+\end{figure}
 
 \begin{figure}[p]
   \centering
@@ -186,20 +210,7 @@ It shouldn't be hard to guess that the lattice on $\mathbb{Z}^3$ is a potential 
 \ref{fig:simple cubic lattice}). Similarly to
 the two dimensional case, there many other regular three dimensional network configurations. These include, but again are not limited to, the Diamond Lattice (Figure
 \ref{fig:diamond lattice}), the Body Centered Cubic (BCC) Lattice (Figure \ref{fig:body centered cubic lattice}) and the Face Centered Cubic (FCC) Lattice (Figure \ref{fig:face
-centered cubic lattice}). Notice how none of these results are precise. This is a testament to how hard this problem is.
-
-\begin{center}
-\begin{tabular}{| c | c | c | c |}
-    \hline
-    Configuration & Z & $p_c$ for site percolation & $p_c$ for bond percolation \\
-    \hline
-    Diamond & $4$ & $0.3886$ & $0.4299$ \\
-    Simple Cubic & $6$ & $0.2488$ & $0.3116$ \\
-    BCC & $8$ & $0.1795$ & $0.2464$ \\
-    FCC & $12$ & $0.198$ & $0.119$ \\
-    \hline
-  \end{tabular}
-\end{center}
+centered cubic lattice}). Notice how none of these results are precise. \cite[p. 11]{Sahimi}
 
 \begin{figure}[p]
   \centering
