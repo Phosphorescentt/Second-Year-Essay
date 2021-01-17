@@ -27,6 +27,8 @@ case. This new definition fixes an issue that I'll address after the proof.
   \subseteq V$, with $|C| = \infty$ is $1$.
 \end{definition}
 
+This proof and the following corollory are heavily inspired by the proof and subsequent corollory from Dietrich Stauffer's \textit{Introduction to Percolation Theory}. \cite{Stauffer}
+
 \begin{proof}{(Theorem \ref{thm:critical probability z1 site percolation})}
   We shall prove by contradiction. Let us assume that $p_c \in [0, 1)$ and is fixed. This implies that a chain of length $L$ will have, on average, $L(1-p)$ closed sites. As $L
   \rightarrow \infty$, $L(1-p) \rightarrow \infty$ showing us that there is at least one closed site in the chain and that means there is no continuous row of occupied
@@ -55,4 +57,9 @@ using the definition of $n_s$ and the formula for a geometric series.
   \end{align*}
 \end{proof}
 
-It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$.
+It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$. The technique of considering the sizes of clusters and the number of
+empty sites surrounding them is also used when analysing more compelx structures. Say, for example, you have a cluster, $C$, of size $|C|=9$ on the lattice on $\mathbb{Z}^2$. This
+cluster could take many different shapes with different numbers of empty sites surrounding it. For example, this cluster could be a straight line of open sites which has a total of
+$22$ closed sites surrounding it. Therefore the probability that a cluster like this exists at any site given a percolation probability, $p$, is $p^{9}(1-p)^{20}$. This cluster could also be a
+square of open sites with side length $3$. This would have $12$ closed sites surrounding it and thus the probability of a cluster of this shape existing at any given site is
+$p^{9}(1-p)^{12}$. The ability for clusters to be the same size but have different "perimeters" is what makes analysing these problems in higher dimensions so difficult.
