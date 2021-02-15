@@ -1,0 +1,30 @@
+__Good topic well approached__
+
+- Only 5.5 pages.
+- Abstract might not be needed but doesn't take anything away so might as well leave it.
+- Find more references.
+x Improper citations on Figure 2 and 3. Cite in the caption not before or after the figures.
+- Definitions might be a problem? (Might not be mine or something like that)
+- Content is too easy so find something a bit more complicated. Should be more towards second year level as opposed to first year level.
+- Think about the narrative of the essay a bit more. Find a central topic and explain that more. (Maybe critical probabilites or application (probably this one))
+- Subtle points not clearly explained
+ - Definition 2.1: Confused by the definition itself. (This one needs citing). This whole part of the essay just needs a better explanation. What I'm describing is the expected number of s-clusters per site for the infinite case.
+ - Proof (Theorem 2.1): Not a proof, it's an argument. May or may not be convincing, but it's definitely not a proof. Just don't write it as a proof. Doesn't actually have to be a proof and I won't lose marks for this.
+- Definitions used wrongly. Sometimes I refer to definitions and sometimes I don't. Some definitions aren't really definitions either. Definitions 1.6 and 1.7 are not definitions because I'm missing lots of the conditions required to make it a formal definition.
+- Definition of Critical Probability doesn't belong at the end of section 1.
+
+Topic: Finite vs infinite networks.
+Topic: Critical phenomena.
+Topic: Topology of the networks.
+
+Page 11: Discussion here is disconnected from the previous conversation.
+
+Unclear what's happening in "The one dimensional case". A two sided case (Z) and a one sided case (N)
+
+Everything around Definition 2.2 is strange and doesn't make much sense.
+
+What is the distribution of the length of the clusters.
+
+Worth shortening the section on one dimensional case.
+
+Develop some theory for multidimensional cases so that I can effectively talk about theory.

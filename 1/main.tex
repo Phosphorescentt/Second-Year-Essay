@@ -1,50 +1,51 @@
 \section{Introduction}
-\subsection{The canonical example}
+% \subsection{The canonical example}
 Let us consider the example from the abstract of water filtering through a porus medium, but this time in two dimensions. How do we model this? One might imagine that the medium consists of
 many particles arranged (for simplicity) in an $n \times n$ square lattice and linked to each of their nearest neighbours. Clearly, this is the lattice on $\mathbb{Z}^2$.
-To set up the problem, each of the particles will be expressed as a vertex in a graph and each of the links will be an edge. In the context of percolation, a vertex is called a site and an edge is
+To set up the problem, each of the particles will be expressed as a vertex in a graph and each of the links will be an edge connecting two directly adjacent vertices. In the context of percolation, a vertex is called a site and an edge is
 called a bond; these sites and bonds form a network.
 
-\begin{definition}\label{def:site}
-  A vertex in a graph is referred to as a \textbf{site}.
-\end{definition}
+% \begin{definition}\label{def:site}
+  % A vertex in a graph is referred to as a \textbf{site}.
+% \end{definition}
 
-\begin{definition}\label{def:bond}
-  A edge in a graph is referred to as a \textbf{bond}.
-\end{definition}
+% \begin{definition}\label{def:bond}
+  % A edge in a graph is referred to as a \textbf{bond}.
+% \end{definition}
 
-\begin{definition}\label{def:network}
-  A graph is referred to as a \textbf{network}.
-\end{definition}
+% \begin{definition}\label{def:network}
+  % A graph is referred to as a \textbf{network}.
+% \end{definition}
 
+So what does percolation actually mean? In order to talk about percolation, we need to think about what makes a percolation problem. If we think about the context we're in, some of
+the sites in the network will alow the water through and some of them won't. The sites that allow water to pass through are labeled \textbf{open} and the sites that don't allow
+water to pass through are labeled \textbf{closed}. This gives us \textbf{bond} percolation. If we were to consider open and closed bonds instead of sites, then we would have
+\textbf{site} percolation. We also let these sites or bonds be open with probability $p$ and closed with probability $1-p$. I will refer to this $p$ as the \textbf{percolation
+probability}.
 
-So what does percolation actually mean? First we shall introduce the notion of open and closed sites and bonds and then we can discuss percolation.
+% \begin{definition}\label{def:open}
+  % A site or bond in a network is labeled \textbf{open} if it allows whatever we're considering to pass through.
+% \end{definition}
 
-\begin{definition}\label{def:open}
-  A site or bond in a network is labeled \textbf{open} if it allows whatever we're considering to pass through.
-\end{definition}
+% \begin{definition}\label{def:closed}
+  % A site or bond in a network is labeled \textbf{closed} if it doesn't allow whatever we're considering to pass through.
+% \end{definition}
 
-\begin{definition}\label{def:closed}
-  A site or bond in a network is labeled \textbf{closed} if it doesn't allow whatever we're considering to pass through.
-\end{definition}
-
-And now for the percolation definitions.
-
-\begin{definition}\label{def:site percolation}
-  We say that we are considering \textbf{site percolation} if we let all of the sites in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in
-  [0, 1]$. We refer to $p$ here as the percolation probability.
-\end{definition}
-\begin{definition}\label{def:bond percolation}
-  We say that we are considering \textbf{bond percolation} if we let all of the bonds in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in
-  [0, 1]$. We refer to $p$ here as the percolation probability.
-\end{definition}
+% \begin{definition}\label{def:site percolation}
+  % We say that we are considering \textbf{site percolation} if we let all of the sites in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in
+  % [0, 1]$. We refer to $p$ here as the percolation probability.
+% \end{definition}
+% \begin{definition}\label{def:bond percolation}
+  % We say that we are considering \textbf{bond percolation} if we let all of the bonds in the network be open with probability $p \in [0, 1]$ and closed with probability $1-p \in
+  % [0, 1]$. We refer to $p$ here as the percolation probability.
+% \end{definition}
 
 Now that we've defined site and bond percolation, what's the problem that we're trying to solve? In the case of water being poured on a porus medium, we would like to know
 whether there is an open path from the top of the network to the bottom. We shall model this using site percolation (in fact, all examples in this essay will be using site
 percolation unless explicitly stated otherwise).
 
 \begin{definition}\label{def:open path}
-  We say that a path in a network is \textbf{open} if:
+  Let $N = (V, E)$ be a network, we say that a path in $N$ is \textbf{open} if:
   \begin{itemize}
     \item when considering site perolation, every site in the path is open.
     \item when considering bond percolation, every bond in the path is open.
@@ -52,17 +53,18 @@ percolation unless explicitly stated otherwise).
 \end{definition}
 
 \begin{definition}\label{def:openly connected}
-  Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly connected} if there exists an open path connecting $A$ and $B$.
+  Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly connected} if there exists an open path connecting $A$ and $B$. Throughout this essay, I
+  will interchange the term \textbf{openly connected} with \textbf{connected}.
 \end{definition}
 
 \begin{definition}\label{def:openly disconnected}
   Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly disconnected} if there does not exist an open path connecting $A$ and
-  $B$.\footnote{Definitions \ref{def:open path}, \ref{def:openly connected} and \ref{def:openly disconnected} are equivalent for both site and bond percolation.}
+  $B$. Throughout this essay, I will intercahnge the term \textbf{openly disconnected} with \textbf{disconnected}.\footnote{Definitions \ref{def:open path}, \ref{def:openly connected} and \ref{def:openly disconnected} are equivalent for both site and bond percolation.}
 \end{definition}
 
 The probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$ from before. As a result of our context, our value for $n$ should be
 large---this is the case with most percolation models---but we shall use small $n$ for the sake of example and simplicity. Let us now fix $n$ and see what happens as we vary $p$. Obviously we have two trivial cases, $p=0$ and $p=1$,
-where the network is completely openly disconnected and completely openly connected respectively.
+where the network is completely disconnected and completely connected respectively.
 What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
 \ref{fig:p=0.75} on page \pageref{fig:probabilities}.
 As one might expect, as $p$ increases, so does the "connectedness" of the network; i.e. the probability of having an open path from the top of the network to the bottom increases
@@ -99,7 +101,7 @@ with $p$. Also, observe that as $p$ increases we also get larger "clusters" of o
     \caption{$p=0.75$}
     \label{fig:p=0.75}
   \end{subfigure}
-  \caption{Examples of \textit{bond} percolation for $p\in(0,1)$ on a $40 \times 40$ network.}
+  \caption{Examples of bond percolation for $p\in(0,1)$ on a $40 \times 40$ network.}
   \label{fig:probabilities}
 \end{figure}
 
@@ -115,7 +117,6 @@ exist in the infinite cases.
   cluster, $C \subseteq V$ with $|C| = \infty$ is $1$.
   \todo{Add computational examples of the connectedness as p changes}
 \end{definition}
-% \newpage
 
 \subsection{Other network configurations}
 We have already seen the lattice on $\mathbb{Z}^2$ as an example, but there are many more. To remain within the scope of this essay, we shall only breifly mention some two and
@@ -134,7 +135,7 @@ three dimensional examples and print their site and bond critical probabilities 
 Clearly, one two dimensional network configuration is the lattice on $\mathbb{Z}^2$. In context this is referred to as the square lattice. Other regular two dimensional network configurations include, but are not limited to, the Bethe Lattice (Figure \ref{fig:bethe lattice}), Honeycomb
 Lattice (Figure \ref{fig:honeycomb lattice}), Kagome Lattice (Figure \ref{fig:kagome lattice}) and the Triangular Lattice (Figure \ref{fig:triangular lattice}). As one might
 imagine, each of these configurations has a different (but not necessarily distinct) critical probability. Below is a table showing the critical probabilities for each of the
-aforementioned network configurations. It should be noted that probabilities marked with a * (star) are exact results. \cite[p. 11]{Sahimi}
+aforementioned network configurations. It should be noted that probabilities marked with a * (star) are exact results.
 
 \begin{figure}[h!]
 \begin{center}
@@ -151,7 +152,7 @@ aforementioned network configurations. It should be noted that probabilities mar
   \end{tabular}
 \end{center}
 \centering
-\caption{Critical probabilities for various configurations of two dimensional networks}
+\caption{Critical probabilities for various configurations of two dimensional networks\cite[p. 11]{Sahimi}}
 \label{fig:critical probabilities in two dimensions}
 \end{figure}
 
@@ -169,7 +170,7 @@ aforementioned network configurations. It should be noted that probabilities mar
   \end{tabular}
 \end{center}
 \centering
-\caption{Critical probabilities for various configurations of three dimensional networks}
+\caption{Critical probabilities for various configurations of three dimensional networks\cite[p. 11]{Sahimi}}
 \label{fig:critical probabilities in three dimensions}
 \end{figure}
 
@@ -211,7 +212,7 @@ It shouldn't be hard to guess that the lattice on $\mathbb{Z}^3$ is a potential 
 \ref{fig:simple cubic lattice}). Similarly to
 the two dimensional case, there many other regular three dimensional network configurations. These include, but again are not limited to, the Diamond Lattice (Figure
 \ref{fig:diamond lattice}), the Body Centered Cubic (BCC) Lattice (Figure \ref{fig:body centered cubic lattice}) and the Face Centered Cubic (FCC) Lattice (Figure \ref{fig:face
-centered cubic lattice}). Notice how none of these results are precise. \cite[p. 11]{Sahimi}
+centered cubic lattice}). Notice how none of these results are precise.
 
 \begin{figure}[p]
   \centering
