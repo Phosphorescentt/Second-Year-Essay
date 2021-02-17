@@ -45,11 +45,7 @@ whether there is an open path from the top of the network to the bottom. We shal
 percolation unless explicitly stated otherwise).
 
 \begin{definition}\label{def:open path}
-  Let $N = (V, E)$ be a network, we say that a path in $N$ is \textbf{open} if:
-  \begin{itemize}
-    \item when considering site perolation, every site in the path is open.
-    \item when considering bond percolation, every bond in the path is open.
-  \end{itemize}
+  Let $N = (V, E)$ be a network, we say that a path in $N$ is \textbf{open} if every site in the path is open.
 \end{definition}
 
 \begin{definition}\label{def:openly connected}
@@ -59,25 +55,27 @@ percolation unless explicitly stated otherwise).
 
 \begin{definition}\label{def:openly disconnected}
   Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly disconnected} if there does not exist an open path connecting $A$ and
-  $B$. Throughout this essay, I will intercahnge the term \textbf{openly disconnected} with \textbf{disconnected}.\footnote{Definitions \ref{def:open path}, \ref{def:openly connected} and \ref{def:openly disconnected} are equivalent for both site and bond percolation.}
+  $B$. Throughout this essay, I will intercahnge the term \textbf{openly disconnected} with \textbf{disconnected}.\footnote{Definitions \ref{def:open path}, \ref{def:openly
+  connected} and \ref{def:openly disconnected} are trivially different for bond percolation where $A, B \in E$ instead of $V$.}
 \end{definition}
 
-The probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$ from before. As a result of our context, our value for $n$ should be
+Returning to the example, the probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$ from before. As a result of our context, our value for $n$ should be
 large---this is the case with most percolation models---but we shall use small $n$ for the sake of example and simplicity. Let us now fix $n$ and see what happens as we vary $p$. Obviously we have two trivial cases, $p=0$ and $p=1$,
 where the network is completely disconnected and completely connected respectively.
 What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
 \ref{fig:p=0.75} on page \pageref{fig:probabilities}.
 As one might expect, as $p$ increases, so does the "connectedness" of the network; i.e. the probability of having an open path from the top of the network to the bottom increases
-with $p$. Also, observe that as $p$ increases we also get larger "clusters" of open connected sites or bonds.
+with $p$. Also, observe that as $p$ increases we also get larger "clusters" of openly connected sites.
 
 \begin{definition}\label{def:cluster}
-  Let $N=(V, E)$ be a network. A \textbf{cluster} is a set of vertices, $C \subset V$, such that if $v_1, v_2 \in C$ then $v_1$ and $v_2$ are openly connected.
+  Let $N=(V, E)$ be a network. A \textbf{cluster} is a set of vertices, $C \subset V$, such that if $v_1, v_2 \in C$ then $v_1$ and $v_2$ are openly connected. We also denote the
+  \textbf{size} of $C$ by $|C|$ which refers to the number of sites in $C$.
 \end{definition}
 
-\begin{definition}\label{def:cluster size}
-  Let $N=(V, E)$ be a network and let $C \subset V$ be a cluster. The \textbf{size} of $C$, denoted by $|C|$, is the number of sites in the cluster. A cluster of size $s$ may be
-  referred to as an $s$-cluster.
-\end{definition}
+% \begin{definition}\label{def:cluster size}
+  % Let $N=(V, E)$ be a network and let $C \subset V$ be a cluster. The \textbf{size} of $C$, denoted by $|C|$, is the number of sites in the cluster. A cluster of size $s$ may be
+  % referred to as an $s$-cluster.
+% \end{definition}
 
 \begin{figure}[p]
   \centering
