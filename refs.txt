@@ -1,0 +1,20 @@
+Epidemics, the Ising-model and percolation theory: a comprehensive review focused on Covid-19
+https://arxiv.org/pdf/2003.11860.pdf
+
+Percolation transition in dynamical traffic network with evolving critical bottlenecks
+https://www.pnas.org/content/pnas/112/3/669.full.pdf
+
+Percolation models - wild fires, pandemics and extinctions
+https://medium.com/10x-curiosity/percolation-models-wild-fires-pandemics-and-extinctions-411d155f80be
+
+Contact networok epidemiology: Bond percolation applied to infections disease prediction and control
+https://www.researchgate.net/publication/228647710_Contact_network_epidemiology_Bond_percolation_applied_to_infectious_disease_prediction_and_control
+
+Forest Fire Modelling Using Cellular Automata and Percolation Threshold Analysis
+https://folk.ntnu.no/skoge/prost/proceedings/acc11/data/papers/1503.pdf
+
+Epidemic Percolation Networks, Epidemic Outcomes and Interventions
+https://www.hindawi.com/journals/ipid/2011/543520/
+
+Percolation theory and fire propagation in a forest
+https://core.ac.uk/download/pdf/43551419.pdf
