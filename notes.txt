@@ -27,4 +27,4 @@ What is the distribution of the length of the clusters.
 
 Worth shortening the section on one dimensional case.
 
-Develop some theory for multidimensional cases so that I can effectively talk about theory.
+Develop some theory for multidimensional cases so that I can effectively talk about theory. (I might've meant applications here)
