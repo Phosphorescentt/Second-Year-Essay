@@ -2,8 +2,9 @@
 % \subsection{The canonical example}
 Let us consider the example from the abstract of water filtering through a porus medium, but this time in two dimensions. How do we model this? One might imagine that the medium consists of
 many particles arranged (for simplicity) in an $n \times n$ square lattice and linked to each of their nearest neighbours. Clearly, this is the lattice on $\mathbb{Z}^2$.
-To set up the problem, each of the particles will be expressed as a vertex in a graph and each of the links will be an edge connecting two directly adjacent vertices. In the context of percolation, a vertex is called a site and an edge is
-called a bond; these sites and bonds form a network.
+To set up the problem, each of the particles will be expressed as a vertex in a graph and each of the links will be an edge connecting two directly adjacent vertices. In the
+context of percolation theory, a vertex is called a site and an edge is
+called a bond; these sites and bonds form a graph which we refer to as a network.
 
 % \begin{definition}\label{def:site}
   % A vertex in a graph is referred to as a \textbf{site}.
@@ -19,8 +20,8 @@ called a bond; these sites and bonds form a network.
 
 So what does percolation actually mean? In order to talk about percolation, we need to think about what makes a percolation problem. If we think about the context we're in, some of
 the sites in the network will alow the water through and some of them won't. The sites that allow water to pass through are labeled \textbf{open} and the sites that don't allow
-water to pass through are labeled \textbf{closed}. This gives us \textbf{bond} percolation. If we were to consider open and closed bonds instead of sites, then we would have
-\textbf{site} percolation. We also let these sites or bonds be open with probability $p$ and closed with probability $1-p$. I will refer to this $p$ as the \textbf{percolation
+water to pass through are labeled \textbf{closed}. This gives us \textbf{site} percolation. If we were to consider open and closed bonds instead of sites, then we would have
+\textbf{bond} percolation. We also let these sites or bonds be open with probability $p$ and closed with probability $1-p$. I will refer to this $p$ as the \textbf{percolation
 probability}.
 
 % \begin{definition}\label{def:open}
@@ -41,11 +42,12 @@ probability}.
 % \end{definition}
 
 Now that we've defined site and bond percolation, what's the problem that we're trying to solve? In the case of water being poured on a porus medium, we would like to know
-whether there is an open path from the top of the network to the bottom. We shall model this using site percolation (in fact, all examples in this essay will be using site
+whether there is a route that the water could take from the top of the medium to the bottom. This is called an \textbf{open path}. We shall model this using site percolation (in fact, all examples in this essay will be using site
 percolation unless explicitly stated otherwise).
 
 \begin{definition}\label{def:open path}
-  Let $N = (V, E)$ be a network, we say that a path in $N$ is \textbf{open} if every site in the path is open.
+  Let $N = (V, E)$ be a network, we say that a path in $N$ is \textbf{open} if every site in the path is open. \footnote{This definition is trivially different for bond
+  percolation.}
 \end{definition}
 
 \begin{definition}\label{def:openly connected}
@@ -55,22 +57,37 @@ percolation unless explicitly stated otherwise).
 
 \begin{definition}\label{def:openly disconnected}
   Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly disconnected} if there does not exist an open path connecting $A$ and
-  $B$. Throughout this essay, I will intercahnge the term \textbf{openly disconnected} with \textbf{disconnected}.\footnote{Definitions \ref{def:open path}, \ref{def:openly
-  connected} and \ref{def:openly disconnected} are trivially different for bond percolation where $A, B \in E$ instead of $V$.}
+  $B$. Throughout this essay, I will intercahnge the term \textbf{openly disconnected} with \textbf{disconnected}. % \footnote{Definitions \ref{def:open path}, \ref{def:openly
+  % connected} and \ref{def:openly disconnected} are trivially different for bond percolation.}
 \end{definition}
 
-Returning to the example, the probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$ from before. As a result of our context, our value for $n$ should be
+Returning to the example, the probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$. As a result of our context, our value for $n$ should be
 large---this is the case with most percolation models---but we shall use small $n$ for the sake of example and simplicity. Let us now fix $n$ and see what happens as we vary $p$. Obviously we have two trivial cases, $p=0$ and $p=1$,
 where the network is completely disconnected and completely connected respectively.
 What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
 \ref{fig:p=0.75} on page \pageref{fig:probabilities}.
-As one might expect, as $p$ increases, so does the "connectedness" of the network; i.e. the probability of having an open path from the top of the network to the bottom increases
-with $p$. Also, observe that as $p$ increases we also get larger "clusters" of openly connected sites.
 
-\begin{definition}\label{def:cluster}
-  Let $N=(V, E)$ be a network. A \textbf{cluster} is a set of vertices, $C \subset V$, such that if $v_1, v_2 \in C$ then $v_1$ and $v_2$ are openly connected. We also denote the
-  \textbf{size} of $C$ by $|C|$ which refers to the number of sites in $C$.
-\end{definition}
+As one might expect, as $p$ increases, so does the average size of a cluster of open sites. Also observe that the overall connectedness of the network increases as $p$ increases.
+I.e. the probability of having an open path from the top of the netwoork to the bottom increases with $p$. This is the result that we expect given the context --- as we reduce the
+number of things blocking the way for the water, it's easier for it to pass through the block of our chosen medium. Now let us consider two sites $A$ and $B$ in our example
+network. As we increase $p$, it's obvious that the probability of these two sites $A$ and $B$ being connected will increse. The question is: What's the relationship between $p$ and
+the probability of $A$ and $B$ being connected? It turns out that there's a probability, $p*$, such that
+\begin{itemize}
+  \item for $p < p*$, the network is mostly disconnected so the probability of $A$ and $B$ being connected is close to $0$.
+  \item for $p > p*$, the network is mostly connected so the probability of $A$ and $B$ being connected is close to $1$.
+\end{itemize}
+
+% As one might expect, as $p$ increases, so does the "connectedness" of the network; i.e. the probability of having an open path from the top of the network to the bottom increases
+% with $p$. % Also, observe that as $p$ increases we also get larger "clusters" of openly connected sites.
+
+% \begin{definition}\label{def:cluster}
+  % Let $N=(V, E)$ be a network. A \textbf{cluster} is a set of vertices, $C \subset V$, such that if $v_1, v_2 \in C$ then $v_1$ and $v_2$ are openly connected. We also denote the
+  % \textbf{size} of $C$ by $|C|$ which refers to the number of sites in $C$.
+% \end{definition}
+
+The idea of percolation theory is to understand where this transition from mostly disconnected to mostly connected occurs and what value of $p$ gives rise to such a change in
+structure. This value of $p$ is usually labelled $p_c$ and is referred to as the \textbf{critical probability} or \textbf{critical threshold}. More formally, this
+\textbf{critical probability} is the probability at which, when considering an infinite network, a cluster of infinite size is guaranteed to exist. 
 
 % \begin{definition}\label{def:cluster size}
   % Let $N=(V, E)$ be a network and let $C \subset V$ be a cluster. The \textbf{size} of $C$, denoted by $|C|$, is the number of sites in the cluster. A cluster of size $s$ may be
@@ -99,22 +116,23 @@ with $p$. Also, observe that as $p$ increases we also get larger "clusters" of o
     \caption{$p=0.75$}
     \label{fig:p=0.75}
   \end{subfigure}
-  \caption{Examples of bond percolation for $p\in(0,1)$ on a $40 \times 40$ network.}
+  \caption{Examples of bond percolation for $p\in(0,1)$ on a $40 \times 40$ network where if a site is open in the model it appears present in the diagram and bonds are only
+  present if they connect two open sites.}
   \label{fig:probabilities}
 \end{figure}
 
-We will explore clusters in more detail in the next section, but for now let us introduce the idea of a critical probability. Although they don't exist in the finite cases, they do
-exist in the infinite cases. 
+% We will explore clusters in more detail in the next section, but for now let us introduce the idea of a critical probability. Although they don't exist in the finite cases, they do
+% exist in the infinite cases. 
 
-\begin{definition}\label{def:infinite cluster}
-  Consider a network, $N = (V, E)$. A cluster, $C \subseteq V$, is considered \textbf{infinite} if and only if $|C| = \infty$.
-\end{definition}
+% \begin{definition}\label{def:infinite cluster}
+  % Consider a network, $N = (V, E)$. A cluster, $C \subseteq V$, is considered \textbf{infinite} if and only if $|C| = \infty$.
+% \end{definition}
 
-\begin{definition}\label{def:critical probability}
-  Consider an infinite network $N = (V, E)$. The \textbf{critical probability}, denoted $p_c$, is the percolation probabililty such that the probability that there exists a
-  cluster, $C \subseteq V$ with $|C| = \infty$ is $1$.
-  \todo{Add computational examples of the connectedness as p changes}
-\end{definition}
+% \begin{definition}\label{def:critical probability}
+  % Consider an infinite network $N = (V, E)$. The \textbf{critical probability}, denoted $p_c$, is the percolation probabililty such that the probability that there exists a
+  % cluster, $C \subseteq V$ with $|C| = \infty$ is $1$.
+  % \todo{Add computational examples of the connectedness as p changes}
+% \end{definition}
 
 \subsection{Other network configurations}
 We have already seen the lattice on $\mathbb{Z}^2$ as an example, but there are many more. To remain within the scope of this essay, we shall only breifly mention some two and
