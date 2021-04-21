@@ -7,7 +7,7 @@ https://www.pnas.org/content/pnas/112/3/669.full.pdf
 Percolation models - wild fires, pandemics and extinctions
 https://medium.com/10x-curiosity/percolation-models-wild-fires-pandemics-and-extinctions-411d155f80be
 
-Contact networok epidemiology: Bond percolation applied to infections disease prediction and control
+Contact network epidemiology: Bond percolation applied to infections disease prediction and control
 https://www.researchgate.net/publication/228647710_Contact_network_epidemiology_Bond_percolation_applied_to_infectious_disease_prediction_and_control
 
 Forest Fire Modelling Using Cellular Automata and Percolation Threshold Analysis

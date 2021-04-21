@@ -1,43 +1,24 @@
-\section{The one dimensional case}
-To develop an understanding of how to analyse these networks, we shall consider the one dimensional case where our network is the lattice on $\mathbb{Z}$, or a "chain". % We shall use the same
-% idea of percolation probability from definitions \ref{def:site percolation} and \ref{def:bond percolation}.
+\section{Analysis of different network configurations}
+In this section, we will look at a couple of techniques used to analyse different network configurations to determine their critical probabilities.
 
-\begin{theorem}\label{thm:critical probability z1 site percolation}
-  The critical probability, $p_c$, for the lattice on $\mathbb{Z}$ when considering site percolation is $p_c = 1$.
-\end{theorem}
+\subsection{The one dimensional case}
+To develop an understanding of how to analyse these networks, we shall consider the one dimensional case where our network is the lattice on $\mathbb{Z}$, or a "chain".
+If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$ because that's the only way that everything is connected. In
+order to more rigorously understand this result, we shall introduce some more
+machinery. This machinery isn't necessary for the "proof", but it helps with understanding and will allow us to analyse more interesting cases later on. The following line of
+argument is inspired by Dietrich Stauffer's \textit{Introduction to Percolation Theory} \cite{Stauffer}.
 
-If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$. In order to prove this theorem, we shall introduce some more
-machinery. This machinery isn't necessary for the proof, but it helps with understanding and will allow us to analyse more interesting cases later on.
+If we let each of the sites in our chain be open with probability $p$, then the probability that any $s$ arbitrary sites are all open is $p^s$. Now if we wanted to create a cluster
+in our chain of size $s$, we would have to have one closed site followed by $s$ open sites followed by a final closed site to cap it off. This means that the probability of any
+given site being the left end of a cluster of size $s$ is $(1-p)p^s(1-p) = p^s(1-p)^2$.
 
-\begin{definition}\label{def:s-clusters per site}
-  If the percolation probability on the chain is $p$, we define the \textbf{number of $\mathbf{s}$-clusters per site} by the following quantity:
-  $$n_s = p^s(1-p)^2$$
-\end{definition}
-
-This quantity represents the probability that any given site in the network is the left end of an $s$-cluster. So, if our network is of length $L >> s$, then we will have
-$Ln_s=Lp^s(1-p)^2$ clusters of size $s$ on average. This quantity also allows us to explore the probability that any given site is part of an $s$-cluster. Such a probability is
-given by the quantity $n_ss$.
-
-The idea of percolation is to understand whether a path exists from one side of the network to the other, so we have to use a slightly different definition for the one dimensional
-case. This new definition fixes an issue that I'll address after the proof.
-
-\begin{definition}\label{def:critical probability special case}
-  Consider the lattice on $\mathbb{Z}$ of the form $N = (V, E)$. The critical probability, denoted $p_c$, is the percolation probability such that the probability that there
-  \textbf{uniquely} exists a cluster, $C
-  \subseteq V$, with $|C| = \infty$ is $1$.
-\end{definition}
-
-This proof and the following corollory are heavily inspired by the proof and subsequent corollory from Dietrich Stauffer's \textit{Introduction to Percolation Theory}. \cite{Stauffer}
-
-\begin{proof}{(Theorem \ref{thm:critical probability z1 site percolation})}
-  We shall prove by contradiction. Let us assume that $p_c \in [0, 1)$ and is fixed. This implies that a chain of length $L$ will have, on average, $L(1-p)$ closed sites. As $L
-  \rightarrow \infty$, $L(1-p) \rightarrow \infty$ showing us that there is at least one closed site in the chain and that means there is no continuous row of occupied
-  sites. Thus $p_c=1$ in order to have only one infinite cluster.
-\end{proof}
-
-So why doesn't this proof work if we hadn't made that ammendment to the definition. Notice that $\mathbb{Z}$ is a countably infinite set and all of the $L(1-p)$ closed sites form a
-subset of $\mathbb{Z}$. This means that the set of all closed sites is also countably infinite. This situation may be rephrased in a way such that we must partition a countably infinite set into
-countably infinite subsets. \todo{prove this?}
+So now how many clusters of size $s$ are there in our chain? If we suppose that the length of the chain is $L >> s$, then we have $Lp^s(1-p)^2$ clusters of size $s$ in our chain of
+length $L$ (ignoring small errors produced at the right end of the chain). It's practical for us to talk about the number of clusters at any given site in the chain which is
+$\frac{Lp^s(1-p)^2}{L} = p^s(1-p)^2$ which we denote by $n_s$ and refer to as the \textbf{normalised cluster number}. Now it's clear that the probability of any site belonging to a
+cluster of size is is larger than our normalised cluster number by a factor of $s$ yielding $n_ss$. Now we can consider the critical probability for this configuration. We want
+every site in the chain to be occupied so that there are no holes. If $p = 1$, this is clearly true and the whole chain is one single cluster. For $p < 1$ there will be some holes.
+For a chain of length $L$, on average we will have $L(1-p)$ empty sites. As we let $L \rightarrow \infty$ for a fixed $p < 1$ we get that $L(1-p) \rightarrow \infty$. Therefore
+there is at least one empty site in the chain so we don't have percolation. Thus $p_c = 1$.
 
 The above results allow us to get some more interesting information about the behaviour of our system. For example, we can deduce the following:
 \begin{corollary}
@@ -57,8 +38,10 @@ using the definition of $n_s$ and the formula for a geometric series.
   \end{align*}
 \end{proof}
 
-It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$. The technique of considering the sizes of clusters and the number of
-empty sites surrounding them is also used when analysing more compelx structures. Say, for example, you have a cluster, $C$, of size $|C|=9$ on the lattice on $\mathbb{Z}^2$. This
+It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$.
+
+The technique of considering the sizes of clusters and the number of
+empty sites surrounding them is also used when analysing more complex structures. Say, for example, you have a cluster, $C$, of size $|C|=9$ on the lattice on $\mathbb{Z}^2$. This
 cluster could take many different shapes with different numbers of empty sites surrounding it. For example, this cluster could be a straight line of open sites which has a total of
 $22$ closed sites surrounding it. Therefore the probability that a cluster like this exists at any site given a percolation probability, $p$, is $p^{9}(1-p)^{20}$. This cluster could also be a
 square of open sites with side length $3$. This would have $12$ closed sites surrounding it and thus the probability of a cluster of this shape existing at any given site is
