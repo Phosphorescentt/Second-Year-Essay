@@ -1,1 +1,44 @@
 \section{Applications}
+This section will consider some of the applications of percolation theory and this idea of critical thresholds --- the idea that there exists a point in a system where the
+structure of it changes massively.
+
+\subsection{Epidemiology}
+It wouldn't be an essay written in 2020-2021 if I didn't mention epidemiology in one way or another. This part of the essay will focus on a paper written in 2011 by Eben Kenah and
+Joel C. Miller at the University of Washington \cite{Kenah}. The aforementioned paper sets up a Susceptible, Exposed, Infected, Removed (SEIR) model. Every member of the population
+is in one of these four states at any given time. If a member of the population is:
+
+\begin{itemize}
+  \item susceptible then they're in a position where they could contract the disease
+  \item exposed then they have been exposed to the disease and it is currently in a latent period during which the member is infected but not infectious
+  \item infected then the member is now infectious with the disease
+  \item removed then the member is no longer susceptible to the disease and nor are they infectious.
+\end{itemize}
+
+The E and I stages take some time to transition through and in the model are equipped with an $\varepsilon_i$ and a $r_i$ to describe the amount of time it takes to become infectous
+after being exposed and the amouont of time it takes to recover after becoming infected. 
+
+The model in this paper is called an Epidemic Percolation Network (EPN) and it relies on representing each individual $i$ in the population as a vertex in a
+network. Then for every other $j$ in the population the edge between $i$ and $j$ can be one of the four following things:
+
+\begin{enumerate}
+  \item no edge between $i$ and $j$,
+  \item a directed edge from $i$ to $j$,
+  \item a directed edge from $j$ to $i$,
+  \item an undirected edge between $i$ and $j$.
+\end{enumerate}
+
+Point 2 means that $i$ will infect $j$ if $i$ is ever infected, point 3 means that $j$ will infect $i$ if $j$ is ever infected, point 4 means that if $i$ is infected then it will infect $j$ or vice
+versa and point 1 means that if $i$ is infected it will \textit{not} infect $j$ or vice versa. It's worth noting that these edges are assigned randomly and as a result we have a
+random network.
+
+We define the \textit{in-component} of $i$ to be the set of nodes from which $i$ can be reached by choosing the correct path. We also define the \textit{out-component} of $i$ to be the set of nodes that can be reached from $i$
+by following a series of edges. In both of these definitions, the undirected edges may be traversed in either direction. The idea for these definitions is that if any node in the
+in-component of $i$ is infected then $i$ will eventually be infected and if $i$ is infected then every node in the out-component of $i$ will be infected eventually. As a result of
+the randomness of the network, any given individual $i$ does not have a set in- or out-components. We consider the \textit{epidemic threshold} of this SEIR model to correspond to
+the emergence of large components in the EPN. We define a \textit{strongly connected component} (SCC) to be a group of nodes wherein each node can be reached by any other node. As a
+result of all these nodes being connected, each node in a SCC has the same in- and out-component as every other node in the SCC. As before, the transition in structure occurs when
+we go from having a mostly disconnected structure to a mostly connected structure. As such, an EPN below the epidemic threshold gives us many small SCCs, but an EPN
+above the epidemic threshold gives us one \textit{giant strongly connected component} (GSCC) and many small SCCs. We lable the in-component of the GSCC as GIN and the
+out-component of the GSCC as GOUT. Armed with this extra terminology, we can now see that if all initial infections occur outside the GIN then we have a minor epidemic because the
+out-components of all initial infections are small. However, if the initial infection is in the GIN, then the infection necessarily spreads to the GSCC and also to the GOUT so we
+have a major epidemic.

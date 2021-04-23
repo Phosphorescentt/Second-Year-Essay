@@ -3,7 +3,8 @@ In this section, we will look at a couple of techniques used to analyse differen
 
 \subsection{The one dimensional case}
 To develop an understanding of how to analyse these networks, we shall consider the one dimensional case where our network is the lattice on $\mathbb{Z}$, or a "chain".
-If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$ because that's the only way that everything is connected. In
+If we recall the definition of the critical probability, the value of $p_c$ that we're looking for is intuitively $1$ because that's the only way that everything is connected. This
+is true for both site and bond percolation. In
 order to more rigorously understand this result, we shall introduce some more
 machinery. This machinery isn't necessary for the "proof", but it helps with understanding and will allow us to analyse more interesting cases later on. The following line of
 argument is inspired by Dietrich Stauffer's \textit{Introduction to Percolation Theory} \cite{Stauffer}.
@@ -40,9 +41,21 @@ using the definition of $n_s$ and the formula for a geometric series.
 
 It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$.
 
-The technique of considering the sizes of clusters and the number of
-empty sites surrounding them is also used when analysing more complex structures. Say, for example, you have a cluster, $C$, of size $|C|=9$ on the lattice on $\mathbb{Z}^2$. This
-cluster could take many different shapes with different numbers of empty sites surrounding it. For example, this cluster could be a straight line of open sites which has a total of
-$22$ closed sites surrounding it. Therefore the probability that a cluster like this exists at any site given a percolation probability, $p$, is $p^{9}(1-p)^{20}$. This cluster could also be a
-square of open sites with side length $3$. This would have $12$ closed sites surrounding it and thus the probability of a cluster of this shape existing at any given site is
-$p^{9}(1-p)^{12}$. The ability for clusters to be the same size but have different "perimeters" is what makes analysing these problems in higher dimensions so difficult.
+\subsection{Bethe Lattice}
+Another easy case to analyse is the Bethe lattice as showin in Figure \ref{fig:bethe lattice}. The Bethe lattice is another configuration that's easy for us to analyse.
+
+When looking at the infinite Bethe lattice, it's clear that we could choose any site to be the root of the lattice just by moving the all the other sites around to make the visual
+representation clearer. This self-similarity means that we only have to consider one branch of the Bethe lattice and if that percolates then so does the whole structure. So if we
+assume that some part of the lattice has already been percolated through and look at what's remaining we can see that we're left with a binary tree. In order for percolation to
+take place here, we need that at least one of these branches is present so we require that $p \geq 1/2$ which gives us our critical probability of $p_c = 1/2$. Applying this same
+process to the case where $Z = n \in \mathbb{N}\setminus \{0, 1\}$, it's clear that the bond percolation probability should be $p_c = \frac{1}{Z-1}$.
+
+\subsection{More advanced configurations}
+Unfortunately, it's outside the scope of this essay to consider more intricate configurations due to the extreme complexity that arises very quickly. Consider, for example, the
+lattice on $\mathbb{Z}^2$. It's troublesome to use the technique of considering clusters and the number of empty sites surrounding such clusters because of the many forms that any
+given cluster can take. If we have a cluster $C$ of size $|C| = 1$ then there's only one possible form for that where it's one open site surrounded by four closed sites giving us a
+probability of the site existing of $p(1-p)^4$. Now consider a cluster $C$ of size $|C|$ = 9. This cluster can take many different shapes that have different "perimiters". It could
+be a $3 \times 3$ square of open sites surrounded by $12$ closed ones giving us a probability of $p^9(1-p)^{12}$ of this cluster existing. It could also be a $9 \times 1$ line of
+open sites that has a total of $20$ closed sites surrounding it resulting in a probability of $p^9(1-p)^{20}$ of this cluster existing. The fact that the probability of these
+clusters existing isn't uniquely defined by their size makes analysing these problems this way much more problematic. As such, this essay will not explore the methods for
+calculating the percolation probabilities for these more complicated configurations.
