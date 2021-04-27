@@ -57,24 +57,24 @@ percolation unless explicitly stated otherwise).
 
 \begin{definition}\label{def:openly disconnected}
   Let $N=(V, E)$ be a network and let $A, B \in V$. The sites $A, B$ are \textbf{openly disconnected} if there does not exist an open path connecting $A$ and
-  $B$. Throughout this essay, I will intercahnge the term \textbf{openly disconnected} with \textbf{disconnected}. % \footnote{Definitions \ref{def:open path}, \ref{def:openly
+  $B$. Throughout this essay, I will interchange the term \textbf{openly disconnected} with \textbf{disconnected}. % \footnote{Definitions \ref{def:open path}, \ref{def:openly
   % connected} and \ref{def:openly disconnected} are trivially different for bond percolation.}
 \end{definition}
 
 Returning to the example, the probability that an open path from the top of the network to the bottom exists depends on both our choices of both $p$ and $n$. As a result of our context, our value for $n$ should be
 large---this is the case with most percolation models---but we shall use small $n$ for the sake of example and simplicity. Let us now fix $n$ and see what happens as we vary $p$. Obviously we have two trivial cases, $p=0$ and $p=1$,
 where the network is completely disconnected and completely connected respectively.
-What about when $p\in(0,1)$? Let's inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
+What about when $p\in(0,1)$? Let us inspect three different values of $p$ on our network: $p=0.25$, $p=0.5$ and $p=0.75$ as shown in figures \ref{fig:p=0.25}, \ref{fig:p=0.5} and
 \ref{fig:p=0.75} on page \pageref{fig:probabilities}.
 
-As one might expect, as $p$ increases, so does the average size of a "cluster" of open sites. Also observe that the overall connectedness of the network increases as $p$ increases.
-I.e. the probability of having an open path from the top of the netwoork to the bottom increases with $p$. This is the result that we expect given the context --- as we reduce the
+As one might expect, as $p$ increases, so does the average size of a "cluster" of open sites. Also observe that the overall connectedness of the network increases as $p$ increases
+i.e. the probability of having an open path from the top of the network to the bottom increases with $p$. This is the result that we expect given the context --- as we reduce the
 number of things blocking the way for the water, it's easier for it to pass through the block of our chosen medium. Now let us consider two sites $A$ and $B$ in our example
 network. As we increase $p$, it's obvious that the probability of these two sites $A$ and $B$ being connected will increse. The question is: What's the relationship between $p$ and
 the probability of $A$ and $B$ being connected? It turns out that there's a probability, $p^*$, such that for some $\varepsilon$ close to zero
 \begin{itemize}
-  \item for $p < p^* - \varepsilon$, the network is probability of $A$ and $B$ being connected is close to $0$.
-  \item for $p > p^* + \varepsilon$, the network is probability of $A$ and $B$ being connected is close to $1$.
+  \item for $p < p^* - \varepsilon$, the probability of $A$ and $B$ being connected is close to $0$.
+  \item for $p > p^* + \varepsilon$, the probability of $A$ and $B$ being connected is close to $1$.
 \end{itemize}
 
 The existence of such a $p^*$ indicates that there must be some threshold where the network transitions from being mostly disconnected to mostly connected. To understand the
@@ -90,7 +90,7 @@ structure of the network as a whole and not just two points, we have to consider
 \end{definition}
 
 In our example, because we're working in a finite case, there's no single value where this change in structure is obvious --- it happens over a range of values. In the infinite
-case however, the change in structure happens instantaneously. I.e. we have the same as the above but without the epsilons. This change in structure is formally defined as the
+case however, the change in structure happens instantaneously i.e. we have the same as the above but without the epsilons. This change in structure is formally defined as the
 point at which the network is \textit{guaranteed} to have a cluster of infinite size. The probability $p_c$ that gives rise to this change in structure is referred to as the
 \textbf{critical probability} and is dependent on the structure of the network.
 
@@ -116,8 +116,8 @@ point at which the network is \textit{guaranteed} to have a cluster of infinite 
     \caption{$p=0.75$}
     \label{fig:p=0.75}
   \end{subfigure}
-  \caption{Examples of bond percolation for $p\in(0,1)$ on a $40 \times 40$ network where if a site is open in the model it appears present in the diagram and bonds are only
-  present if they connect two open sites.}
+  \caption{Examples of site percolation for $p\in(0,1)$ on a $40 \times 40$ network where if a site is open in the model it appears present in the diagram and bonds are only
+  present if they connect two open sites. Code for generating these images can be found at https://github.com/Phosphorescentt/Second-Year-Essay/blob/main/python/percolation.py}
   \label{fig:probabilities}
 \end{figure}
 
@@ -166,24 +166,6 @@ aforementioned network configurations. It should be noted that probabilities mar
 \label{fig:critical probabilities in two dimensions}
 \end{figure}
 
-\begin{figure}[h!]
-\begin{center}
-\begin{tabular}{| c | c | c | c |}
-    \hline
-    Configuration & Z & $p_c$ for site percolation & $p_c$ for bond percolation \\
-    \hline
-    Diamond & $4$ & $0.3886$ & $0.4299$ \\
-    Simple Cubic & $6$ & $0.2488$ & $0.3116$ \\
-    BCC & $8$ & $0.1795$ & $0.2464$ \\
-    FCC & $12$ & $0.198$ & $0.119$ \\
-    \hline
-  \end{tabular}
-\end{center}
-\centering
-\caption{Critical probabilities for various configurations of three dimensional networks\cite[p. 11]{Sahimi}}
-\label{fig:critical probabilities in three dimensions}
-\end{figure}
-
 \begin{figure}[p]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
@@ -220,9 +202,28 @@ aforementioned network configurations. It should be noted that probabilities mar
 \subsection*{Three dimensional network configurations}
 It shouldn't be hard to guess that the lattice on $\mathbb{Z}^3$ is a potential configuration for three dimensional networks. We call this configuration the Simple Cubic Lattice (Figure
 \ref{fig:simple cubic lattice}). Similarly to
-the two dimensional case, there many other regular three dimensional network configurations. These include, but again are not limited to, the Diamond Lattice (Figure
+the two dimensional case, there are many other regular three dimensional network configurations. These include, but again are not limited to, the Diamond Lattice (Figure
 \ref{fig:diamond lattice}), the Body Centered Cubic (BCC) Lattice (Figure \ref{fig:body centered cubic lattice}) and the Face Centered Cubic (FCC) Lattice (Figure \ref{fig:face
 centered cubic lattice}). Notice how none of these results are precise.
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+    \hline
+    Configuration & Z & $p_c$ for site percolation & $p_c$ for bond percolation \\
+    \hline
+    Diamond & $4$ & $0.3886$ & $0.4299$ \\
+    Simple Cubic & $6$ & $0.2488$ & $0.3116$ \\
+    BCC & $8$ & $0.1795$ & $0.2464$ \\
+    FCC & $12$ & $0.198$ & $0.119$ \\
+    \hline
+  \end{tabular}
+\end{center}
+\centering
+\caption{Critical probabilities for various configurations of three dimensional networks\cite[p. 11]{Sahimi}}
+\label{fig:critical probabilities in three dimensions}
+\end{figure}
+
 
 \begin{figure}[p]
   \centering

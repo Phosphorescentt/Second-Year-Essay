@@ -16,7 +16,7 @@ given site being the left end of a cluster of size $s$ is $(1-p)p^s(1-p) = p^s(1
 So now how many clusters of size $s$ are there in our chain? If we suppose that the length of the chain is $L >> s$, then we have $Lp^s(1-p)^2$ clusters of size $s$ in our chain of
 length $L$ (ignoring small errors produced at the right end of the chain). It's practical for us to talk about the number of clusters at any given site in the chain which is
 $\frac{Lp^s(1-p)^2}{L} = p^s(1-p)^2$ which we denote by $n_s$ and refer to as the \textbf{normalised cluster number}. Now it's clear that the probability of any site belonging to a
-cluster of size is is larger than our normalised cluster number by a factor of $s$ yielding $n_ss$. Now we can consider the critical probability for this configuration. We want
+cluster of size $s$ is larger than our normalised cluster number by a factor of $s$ yielding $n_ss$. Now we can consider the critical probability for this configuration. We want
 every site in the chain to be occupied so that there are no holes. If $p = 1$, this is clearly true and the whole chain is one single cluster. For $p < 1$ there will be some holes.
 For a chain of length $L$, on average we will have $L(1-p)$ empty sites. As we let $L \rightarrow \infty$ for a fixed $p < 1$ we get that $L(1-p) \rightarrow \infty$. Therefore
 there is at least one empty site in the chain so we don't have percolation. Thus $p_c = 1$.
@@ -42,20 +42,20 @@ using the definition of $n_s$ and the formula for a geometric series.
 It's worth noting that this equality doesn't hold for $p=1$, because $n_s=1^s(1-1)^2=0$ so $\sum_sn_ss = 0$.
 
 \subsection{Bethe Lattice}
-Another easy case to analyse is the Bethe lattice as showin in Figure \ref{fig:bethe lattice}. The Bethe lattice is another configuration that's easy for us to analyse.
+Another easy case to analyse is the Bethe lattice as shown in Figure \ref{fig:bethe lattice}. The Bethe lattice is another configuration that's easy for us to analyse.
 
-When looking at the infinite Bethe lattice, it's clear that we could choose any site to be the root of the lattice just by moving the all the other sites around to make the visual
+When looking at the infinite Bethe lattice, it's clear that we could choose any site to be the root of the lattice just by moving all the other sites around to make the visual
 representation clearer. This self-similarity means that we only have to consider one branch of the Bethe lattice and if that percolates then so does the whole structure. So if we
 assume that some part of the lattice has already been percolated through and look at what's remaining we can see that we're left with a binary tree. In order for percolation to
-take place here, we need that at least one of these branches is present so we require that $p \geq 1/2$ which gives us our critical probability of $p_c = 1/2$. Applying this same
+take place here, we need that at least one of these branches be present so we require that $p \geq 1/2$ which gives us our critical probability of $p_c = 1/2$. Applying this same
 process to the case where $Z = n \in \mathbb{N}\setminus \{0, 1\}$, it's clear that the bond percolation probability should be $p_c = \frac{1}{Z-1}$.
 
 \subsection{More advanced configurations}
 Unfortunately, it's outside the scope of this essay to consider more intricate configurations due to the extreme complexity that arises very quickly. Consider, for example, the
 lattice on $\mathbb{Z}^2$. It's troublesome to use the technique of considering clusters and the number of empty sites surrounding such clusters because of the many forms that any
-given cluster can take. If we have a cluster $C$ of size $|C| = 1$ then there's only one possible form for that where it's one open site surrounded by four closed sites giving us a
-probability of the site existing of $p(1-p)^4$. Now consider a cluster $C$ of size $|C|$ = 9. This cluster can take many different shapes that have different "perimiters". It could
-be a $3 \times 3$ square of open sites surrounded by $12$ closed ones giving us a probability of $p^9(1-p)^{12}$ of this cluster existing. It could also be a $9 \times 1$ line of
-open sites that has a total of $20$ closed sites surrounding it resulting in a probability of $p^9(1-p)^{20}$ of this cluster existing. The fact that the probability of these
+given cluster can take. If we have a cluster, $C$, of size $|C| = 1$ then there's only one possible form for that where it's one open site surrounded by four closed sites giving us a
+probability of the site existing of $p(1-p)^4$. Now consider a cluster, $C$, of size $|C|$ = 9. This cluster can take many different shapes that have different "perimiters". It could
+be a $3 \times 3$ square of open sites surrounded by $12$ closed ones giving us a probability of $p^9(1-p)^{12}$ of any given site being the start of this cluster. It could also be a $9 \times 1$ line of
+open sites that has a total of $20$ closed sites surrounding it resulting in a probability of $p^9(1-p)^{20}$ of any given site being the start of this cluster. The fact that the probability of these
 clusters existing isn't uniquely defined by their size makes analysing these problems this way much more problematic. As such, this essay will not explore the methods for
 calculating the percolation probabilities for these more complicated configurations.
