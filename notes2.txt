@@ -1,0 +1,3 @@
+- typo of network after definition 1.3
+- put link to code for generating graphs somewhere
+
